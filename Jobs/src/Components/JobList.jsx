@@ -1,6 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const JobList = ({job}) => {
+    const [fullDescription, setFullDescription] = useState(false);
+
+    let description = job.description;
   return (
     <div className="bg-white rounded-xl shadow-md relative">
                 <div className="p-4">
@@ -10,7 +13,10 @@ const JobList = ({job}) => {
                   </div>
     
                   <div className="mb-5">
-                   {job.description}
+                   {fullDescription ? description : description?.substring(0, 90) + ' ...'}
+                   <button onClick={() => {setFullDescription(!fullDescription)}}>
+                    {fullDescription ? 'Less' : 'More'}
+                   </button>
                   </div>
     
                   <h3 className="text-indigo-500 mb-2">{job.salary} / Year</h3>
