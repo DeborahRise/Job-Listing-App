@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import deblogo from '../assets/AAP_5461.png'
 
 const Navbar = () => {
@@ -22,20 +23,20 @@ const Navbar = () => {
             </a>
             <div className="md:ml-auto">
               <div className="flex space-x-2">
-                <a
-                  href="/index.html"
+                <Link
+                  href="/"
                   className="text-black bg-white hover:bg-yellow-900 hover:text-white rounded-md px-3 py-2"
-                  >Home</a>
+                  >Home</Link>
                 
-                <a
-                  href="/jobs.html"
+                <Link
+                  href="/jobs"
                   className="text-white hover:bg-yellow-900 hover:text-white rounded-md px-3 py-2"
-                  >Jobs</a>
+                  >Jobs</Link>
                 
-                <a
-                  href="/add-job.html"
+                <Link
+                  href="/add-job"
                   className="text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2"
-                  >Add Job</a>
+                  >Add Job</Link>
                 
               </div>
             </div>
