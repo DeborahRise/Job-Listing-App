@@ -11,7 +11,7 @@ const Navbar = () => {
             className="flex flex-1 items-center justify-center md:items-stretch md:justify-start">
           
             {/* <!-- Logo --> */}
-            <a className="flex flex-shrink-0 items-center mr-4" href="/index.html">
+            <Link className="flex flex-shrink-0 items-center mr-4" to="/">
               <img
                 className="h-20 w-auto rounded-full border-2 border-white"
                 src={deblogo}
@@ -20,21 +20,21 @@ const Navbar = () => {
               <span className="hidden md:block text-white text-2xl font-bold ml-2"
                 >Jobs</span >
              
-            </a>
+            </Link>
             <div className="md:ml-auto">
               <div className="flex space-x-2">
                 <Link
-                  href="/"
+                  to="/"
                   className="text-black bg-white hover:bg-yellow-900 hover:text-white rounded-md px-3 py-2"
                   >Home</Link>
                 
                 <Link
-                  href="/jobs"
+                  to="/jobs"
                   className="text-white hover:bg-yellow-900 hover:text-white rounded-md px-3 py-2"
                   >Jobs</Link>
                 
                 <Link
-                  href="/add-job"
+                  to="/add-job"
                   className="text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2"
                   >Add Job</Link>
                 
