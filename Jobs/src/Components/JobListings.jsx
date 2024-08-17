@@ -12,7 +12,7 @@ const JobListings = ({ isHome=false}) => {
   useEffect( () => {
     const fetchJobs = async () => {
       try {
-        const response = await axios.get('http://localhost:3001/jobs');
+        const response = await axios.get('/api/jobs');
         setJobs(response.data);
       } catch (error) {
         console.log('Error JobListing', error)
