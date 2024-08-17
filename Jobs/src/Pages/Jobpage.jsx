@@ -1,9 +1,28 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useState, useEffect} from 'react';
+import { useParams } from 'react-router-dom';
 
 const Jobpage = () => {
-  return (
-    <div>Jobpage</div>
-  )
-}
+  const [job, setJob] =useState(null);
+  const { id } = useParams();
+  
+  useEffect(() => {
+    const getJob = async () => {
+      try {
+        const response = await axios.get(`/api/jobs/${id}`);
+        setJob(response.data);
+      } catch (error) {
+        console.log('jobPage.jsx', error);
+      }
+}; 
+  getJob();
+}, []);
+  
 
-export default Jobpage
+  return (
+    <div>
+      {job?.title}
+    </div>
+  );  
+};
+export default Jobpage;
