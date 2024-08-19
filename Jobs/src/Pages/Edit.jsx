@@ -7,8 +7,8 @@ const Edit = () => {
 
     useEffect(() => {
         const getOldJob = async () => {
-            
-        }
+
+        } getOldJob();
     }, []);
   return (
     <div>Edit</div>
