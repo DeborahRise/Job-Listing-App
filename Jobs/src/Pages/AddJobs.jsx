@@ -5,21 +5,21 @@ const AddJobs = () => {
     <section class="bg-indigo-50">
     <div class="container m-auto max-w-2xl py-24">
       <div
-        class="bg-white px-6 py-8 mb-4 shadow-md rounded-md border m-4 md:m-0"
-      >
+        class="bg-white px-6 py-8 mb-4 shadow-md rounded-md border m-4 md:m-0" >
+     
         <form>
           <h2 class="text-3xl text-center font-semibold mb-6">Add Job</h2>
 
           <div class="mb-4">
             <label for="type" class="block text-gray-700 font-bold mb-2"
-              >Job Type</label
-            >
+              >Job Type</label>
+            
             <select
               id="type"
               name="type"
               class="border rounded w-full py-2 px-3"
-              required
-            >
+              required>
+            
               <option value="Full-Time">Full-Time</option>
               <option value="Part-Time">Part-Time</option>
               <option value="Remote">Remote</option>
@@ -29,8 +29,8 @@ const AddJobs = () => {
 
           <div class="mb-4">
             <label class="block text-gray-700 font-bold mb-2"
-              >Job Listing Name</label
-            >
+              >Job Listing Name</label >
+           
             <input
               type="text"
               id="title"
