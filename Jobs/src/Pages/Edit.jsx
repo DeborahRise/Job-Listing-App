@@ -5,7 +5,11 @@ const Edit = () => {
 
     const [oldJob, setOldJob] = useState("");
 
-    useEffect(() => {}, []);
+    useEffect(() => {
+        const getOldJob = async () => {
+            
+        }
+    }, []);
   return (
     <div>Edit</div>
   )
