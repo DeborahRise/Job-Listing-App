@@ -1,10 +1,11 @@
 import axios from 'axios';
 import React, { useState, useEffect} from 'react';
-import { useParams, Link} from 'react-router-dom';
+import { useParams, Link, useNavigate} from 'react-router-dom';
 import { FaArrowLeft, FaMapMarker } from 'react-icons/fa';
 
 const Jobpage = () => {
   const [job, setJob] =useState(null);
+  const navigate = useNavigate();
   const { id } = useParams();
   
   useEffect(() => {
@@ -18,6 +19,11 @@ const Jobpage = () => {
 }; 
   getJob();
 }, []);
+
+const deleteJob = async ({ id }) => {
+  const response = await axios.delete(`/api/jobs/${id}`);
+  navigate('/jobs');
+}
   
 
   return (
@@ -73,10 +79,10 @@ const Jobpage = () => {
             <div className="bg-white p-6 rounded-lg shadow-md">
               <h3 className="text-xl font-bold mb-6">Company Info</h3>
 
-              <h2 className="text-2xl"> {job?.company.name} </h2>
+              <h2 className="text-2xl"> {job?.company?.name || "empty"} </h2>
 
               <p className="my-2">
-                {job?.company.description}
+                {job?.company?.description || "empty"}
               </p>
 
               <hr className="my-4" />
@@ -84,23 +90,23 @@ const Jobpage = () => {
               <h3 className="text-xl">Contact Email:</h3>
 
               <p className="my-2 bg-yellow-100 p-2 font-bold">
-                {job?.company.contactEmail}
+                {job?.company?.contactEmail || "empty"}
               </p>
 
               <h3 className="text-xl">Contact Phone:</h3>
 
-              <p className="my-2 bg-yellow-100 p-2 font-bold">{job?.company.contactPhone}</p>
+              <p className="my-2 bg-yellow-100 p-2 font-bold">{job?.company?.contactPhone || "empty"}</p>
             </div>
 
             {/* <!-- Manage --> */}
             <div className="bg-white p-6 rounded-lg shadow-md mt-6">
               <h3 className="text-xl font-bold mb-6">Manage Job</h3>
               <Link
-                to="/add-job.html"
+                to={`/edit-job/${id}`}
                 className="bg-yellow-500 hover:bg-yellow-600 text-white text-center font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block"
                 >Edit Job</Link>
               
-              <button
+              <button onClick={() => {deleteJob({id})}}
                 className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block">
                 Delete Job
               </button>
