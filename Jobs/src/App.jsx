@@ -7,12 +7,14 @@ import NotFound from './Pages/NotFound';
 import Jobpage from './Pages/Jobpage';
 import AddJobs from './Pages/AddJobs';
 import EditJob from './Pages/EditJob';
+import Toastify from './Components/Toastify';
 
 
 const App = () => {
   return (
     <>
     <Router>
+      <Toastify />
       <Navbar />
       <Routes>
         <Route path='/' element={<HomePage />} />
