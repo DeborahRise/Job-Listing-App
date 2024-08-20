@@ -1,23 +1,68 @@
-import React from 'react'
+import axios from 'axios';
+import React, {useState} from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const AddJobs = () => {
+const AddJobs = ({ AddJobFxn }) => {
+  const navigate = useNavigate();
+  const [type, setType] = useState('Full-Time');
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [salary, setSalary] = useState('Under-$50K');
+  const [location, setLocation] = useState('');
+  const [companyName, setCompanyName] = useState('');
+  const [companyDescription, setCompanyDescription] = useState('');
+  const [contactEmail, setContactEmail] = useState('');
+  const [contactPhone, setContactPhone] = useState('');
+
+  const SubmitJobFxn = (event) => {
+    event.preventDefault();
+
+    const newJob = {
+      type,
+      title,
+      description,
+      salary,
+      location,
+      Company: {
+        name: companyName,
+        description: companyDescription,
+        contactEmail,
+        contactPhone,
+      },
+    };
+    AddJobToDB(newJob);
+    console.log('new job', newJob);
+    navigate('/jobs');
+  }
+
+  const AddJobToDB = async (newJob) => {
+    const response = await axios.post('/api/jobs', newJob, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    return
+  }
+
   return (
-    <section class="bg-indigo-50">
-    <div class="container m-auto max-w-2xl py-24">
+    <section className="bg-yellow-50">
+    <div className="container m-auto max-w-2xl py-24">
       <div
-        class="bg-white px-6 py-8 mb-4 shadow-md rounded-md border m-4 md:m-0" >
+        className="bg-white px-6 py-8 mb-4 shadow-md rounded-md border m-4 md:m-0" >
      
-        <form>
-          <h2 class="text-3xl text-center font-semibold mb-6">Add Job</h2>
+        <form onSubmit={SubmitJobFxn}>
+          <h2 className="text-3xl text-center font-semibold mb-6">Add Job</h2>
 
-          <div class="mb-4">
-            <label for="type" class="block text-gray-700 font-bold mb-2"
+          <div className="mb-4">
+            <label htmlFor="type" className="block text-gray-700 font-bold mb-2"
               >Job Type</label>
             
             <select
               id="type"
               name="type"
-              class="border rounded w-full py-2 px-3"
+              className="border rounded w-full py-2 px-3"
+              value={ type }
+              onChange={(event) => {setType(event.target.value)}}
               required>
             
               <option value="Full-Time">Full-Time</option>
@@ -27,42 +72,48 @@ const AddJobs = () => {
             </select>
           </div>
 
-          <div class="mb-4">
-            <label class="block text-gray-700 font-bold mb-2"
+          <div className="mb-4">
+            <label className="block text-gray-700 font-bold mb-2"
               >Job Listing Name</label >
            
             <input
               type="text"
               id="title"
               name="title"
-              class="border rounded w-full py-2 px-3 mb-2"
+              className="border rounded w-full py-2 px-3 mb-2"
               placeholder="eg. Beautiful Apartment In Miami"
+              value={title}
+              onChange={(event) => {setTitle(event.target.value)}}
               required
             />
           </div>
-          <div class="mb-4">
+          <div className="mb-4">
             <label
-              for="description"
-              class="block text-gray-700 font-bold mb-2"
+              htmlFor="description"
+              className="block text-gray-700 font-bold mb-2"
               >Description</label>
             
             <textarea
               id="description"
               name="description"
-              class="border rounded w-full py-2 px-3"
+              className="border rounded w-full py-2 px-3"
               rows="4"
               placeholder="Add any job duties, expectations, requirements, etc"
+              value={ description }
+              onChange={(event) => {setDescription(event.target.value)}}
             ></textarea>
           </div>
 
-          <div class="mb-4">
-            <label for="type" class="block text-gray-700 font-bold mb-2"
+          <div className="mb-4">
+            <label htmlFor="type" className="block text-gray-700 font-bold mb-2"
               >Salary</label>
             
             <select
               id="salary"
               name="salary"
-              class="border rounded w-full py-2 px-3"
+              className="border rounded w-full py-2 px-3"
+              value={ salary }
+              onChange={(event) => {setSalary(event.target.value)}}
               required>
             
               <option value="Under $50K">Under $50K</option>
@@ -79,83 +130,93 @@ const AddJobs = () => {
             </select>
           </div>
 
-          <div class='mb-4'>
-            <label class='block text-gray-700 font-bold mb-2'>
+          <div className='mb-4'>
+            <label className='block text-gray-700 font-bold mb-2'>
               Location
             </label>
             <input
               type='text'
               id='location'
               name='location'
-              class='border rounded w-full py-2 px-3 mb-2'
+              className='border rounded w-full py-2 px-3 mb-2'
               placeholder='Company Location'
+              value={ location }
+              onChange={(event) => {setLocation(event.target.value)}}
               required           
             />
           </div>
 
-          <h3 class="text-2xl mb-5">Company Info</h3>
+          <h3 className="text-2xl mb-5">Company Info</h3>
 
-          <div class="mb-4">
-            <label for="company" class="block text-gray-700 font-bold mb-2"
+          <div className="mb-4">
+            <label htmlFor="company" className="block text-gray-700 font-bold mb-2"
               >Company Name</label>
             
             <input
               type="text"
               id="company"
               name="company"
-              class="border rounded w-full py-2 px-3"
+              className="border rounded w-full py-2 px-3"
               placeholder="Company Name"
+              value={ companyName }
+              onChange={(event) => {setCompanyName(event.target.value)}}
             />
           </div>
 
-          <div class="mb-4">
+          <div className="mb-4">
             <label
-              for="company_description"
-              class="block text-gray-700 font-bold mb-2"
+              htmlFor="company_description"
+              className="block text-gray-700 font-bold mb-2"
               >Company Description</label >
            
             <textarea
               id="company_description"
               name="company_description"
-              class="border rounded w-full py-2 px-3"
+              className="border rounded w-full py-2 px-3"
               rows="4"
+              value={ companyDescription }
+              onChange={(event) => {setCompanyDescription(event.target.value)}}
               placeholder="What does your company do?"
             ></textarea>
           </div>
 
-          <div class="mb-4">
+          <div className="mb-4">
             <label
-              for="contact_email"
-              class="block text-gray-700 font-bold mb-2"
+              htmlFor="contact_email"
+              className="block text-gray-700 font-bold mb-2"
               >Contact Email</label>
             
             <input
               type="email"
               id="contact_email"
               name="contact_email"
-              class="border rounded w-full py-2 px-3"
+              className="border rounded w-full py-2 px-3"
               placeholder="Email address for applicants"
+              value={ contactEmail }
+              onChange={(event) => {setContactEmail(event.target.value)}}
               required
             />
           </div>
-          <div class="mb-4">
+          <div className="mb-4">
             <label
-              for="contact_phone"
-              class="block text-gray-700 font-bold mb-2"
+              htmlFor="contact_phone"
+              className="block text-gray-700 font-bold mb-2"
               >Contact Phone</label >
            
             <input
               type="tel"
               id="contact_phone"
               name="contact_phone"
-              class="border rounded w-full py-2 px-3"
+              className="border rounded w-full py-2 px-3"
               placeholder="Optional phone for applicants"
+              value={ contactPhone }
+              onChange={(event) => {setContactPhone(event.target.value)}}
             />
           </div>
 
           <div>
             <button
-              class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline"
+              className="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline"
               type="submit">
             
               Add Job
