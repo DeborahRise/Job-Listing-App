@@ -18,7 +18,7 @@ const App = () => {
         <Route path='/jobs' element={<Jobs />} />
         <Route path='jobs/:id' element={<Jobpage />}/>
         <Route path='*' element={<NotFound />} />
-        <Route path='/add-job' element={<AddJobs />} />
+        <Route path='/add-job' element={<AddJobs AddJobFxn={AddJobs} />} />
       </Routes>
     </Router>
     
