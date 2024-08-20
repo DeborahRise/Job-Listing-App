@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, {useState} from 'react';
 import { useNavigate } from 'react-router-dom';
+import {toast} from 'react-toastify';
 
 const AddJobs = () => {
   const navigate = useNavigate();
@@ -32,6 +33,7 @@ const AddJobs = () => {
     };
     AddJobToDB(newJob);
     console.log('new job', newJob);
+    toast.success('Job successfully created');
     navigate('/jobs');
   }
 
@@ -158,7 +160,7 @@ const AddJobs = () => {
               name="company"
               className="border rounded w-full py-2 px-3"
               placeholder="Company Name"
-              value={ company.name }
+              value={ companyName }
               onChange={(event) => {setCompanyName(event.target.value)}}
             />
           </div>
@@ -174,7 +176,7 @@ const AddJobs = () => {
               name="company_description"
               className="border rounded w-full py-2 px-3"
               rows="4"
-              value={ company.description }
+              value={ companyDescription }
               onChange={(event) => {setCompanyDescription(event.target.value)}}
               placeholder="What does your company do?"
             ></textarea>
@@ -192,7 +194,7 @@ const AddJobs = () => {
               name="contact_email"
               className="border rounded w-full py-2 px-3"
               placeholder="Email address for applicants"
-              value={ company.contactEmail }
+              value={ contactEmail }
               onChange={(event) => {setContactEmail(event.target.value)}}
               required
             />
@@ -209,7 +211,7 @@ const AddJobs = () => {
               name="contact_phone"
               className="border rounded w-full py-2 px-3"
               placeholder="Optional phone for applicants"
-              value={ company.contactPhone }
+              value={ contactPhone }
               onChange={(event) => {setContactPhone(event.target.value)}}
             />
           </div>
