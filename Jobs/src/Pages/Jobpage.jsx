@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useState, useEffect} from 'react';
 import { useParams, Link, useNavigate} from 'react-router-dom';
 import { FaArrowLeft, FaMapMarker } from 'react-icons/fa';
+import { toast } from 'react-toastify';
 
 const Jobpage = () => {
   const [job, setJob] =useState(null);
@@ -21,7 +22,14 @@ const Jobpage = () => {
 }, []);
 
 const deleteJob = async ({ id }) => {
+  
+  const confirm = window.confirm('Are you sure you want to delete?')
+  if (!confirm) return;
+  
   const response = await axios.delete(`/api/jobs/${id}`);
+  
+
+  toast.success('Job successfully, deleted')
   navigate('/jobs');
 }
   
