@@ -83,7 +83,20 @@
         "contactEmail": "contact@ipsumlorem.com",
         "contactPhone": "555-555-5555"
       }
+    },
+    {
+      "id": "af12",
+      "type": "Part-Time",
+      "title": "test",
+      "description": "tessst",
+      "salary": "Under-$50K",
+      "location": "tessst",
+      "Company": {
+        "name": "test",
+        "description": "test",
+        "contactEmail": "DEb@r.c",
+        "contactPhone": "234323"
+      }
     }
   ]
 }
-  
