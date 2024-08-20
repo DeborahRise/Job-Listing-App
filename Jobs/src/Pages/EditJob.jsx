@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, {useState, useEffect} from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const EditJob = () => {
     const [jobs, setJobs] = useState(null);
@@ -61,6 +62,7 @@ const EditJob = () => {
             },
         };
         updateJobToDB(updatedJob);
+        toast.success("Job Successfully Updated")
         navigate('/jobs');
     }
 
