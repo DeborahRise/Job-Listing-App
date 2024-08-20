@@ -5,6 +5,7 @@ import HomePage from './Pages/Homepage';
 import Jobs from './Pages/Jobs';
 import NotFound from './Pages/NotFound';
 import Jobpage from './Pages/Jobpage';
+import AddJobs from './Pages/AddJobs';
 
 
 const App = () => {
@@ -17,6 +18,7 @@ const App = () => {
         <Route path='/jobs' element={<Jobs />} />
         <Route path='jobs/:id' element={<Jobpage />}/>
         <Route path='*' element={<NotFound />} />
+        <Route path='/add-job' element={<AddJobs />} />
       </Routes>
     </Router>
     

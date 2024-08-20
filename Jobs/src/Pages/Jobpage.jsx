@@ -25,7 +25,7 @@ const Jobpage = () => {
     <section>
       <div className="container m-auto py-6 px-6">
         <Link
-          to="/jobs.html"
+          to="/jobs"
           className="text-yellow-500 hover:text-yellow-600 flex items-center">
         
           <FaArrowLeft className='mr-2' /> Back to Job Listings
