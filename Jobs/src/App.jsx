@@ -6,6 +6,7 @@ import Jobs from './Pages/Jobs';
 import NotFound from './Pages/NotFound';
 import Jobpage from './Pages/Jobpage';
 import AddJobs from './Pages/AddJobs';
+import EditJob from './Pages/EditJob';
 
 
 const App = () => {
@@ -18,7 +19,8 @@ const App = () => {
         <Route path='/jobs' element={<Jobs />} />
         <Route path='jobs/:id' element={<Jobpage />}/>
         <Route path='*' element={<NotFound />} />
-        <Route path='/add-job' element={<AddJobs AddJobFxn={AddJobs} />} />
+        <Route path='/add-job' element={<AddJobs />} />
+        <Route path='edit-job/:id' element={<EditJob />} />
       </Routes>
     </Router>
     
