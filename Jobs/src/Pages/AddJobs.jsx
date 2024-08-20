@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, {useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const AddJobs = ({ AddJobFxn }) => {
+const AddJobs = () => {
   const navigate = useNavigate();
   const [type, setType] = useState('Full-Time');
   const [title, setTitle] = useState('');
@@ -23,7 +23,7 @@ const AddJobs = ({ AddJobFxn }) => {
       description,
       salary,
       location,
-      Company: {
+      company: {
         name: companyName,
         description: companyDescription,
         contactEmail,
@@ -158,7 +158,7 @@ const AddJobs = ({ AddJobFxn }) => {
               name="company"
               className="border rounded w-full py-2 px-3"
               placeholder="Company Name"
-              value={ companyName }
+              value={ company.name }
               onChange={(event) => {setCompanyName(event.target.value)}}
             />
           </div>
@@ -174,7 +174,7 @@ const AddJobs = ({ AddJobFxn }) => {
               name="company_description"
               className="border rounded w-full py-2 px-3"
               rows="4"
-              value={ companyDescription }
+              value={ company.description }
               onChange={(event) => {setCompanyDescription(event.target.value)}}
               placeholder="What does your company do?"
             ></textarea>
@@ -192,7 +192,7 @@ const AddJobs = ({ AddJobFxn }) => {
               name="contact_email"
               className="border rounded w-full py-2 px-3"
               placeholder="Email address for applicants"
-              value={ contactEmail }
+              value={ company.contactEmail }
               onChange={(event) => {setContactEmail(event.target.value)}}
               required
             />
@@ -209,7 +209,7 @@ const AddJobs = ({ AddJobFxn }) => {
               name="contact_phone"
               className="border rounded w-full py-2 px-3"
               placeholder="Optional phone for applicants"
-              value={ contactPhone }
+              value={ company.contactPhone }
               onChange={(event) => {setContactPhone(event.target.value)}}
             />
           </div>
